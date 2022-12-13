@@ -1,11 +1,15 @@
 <template>
-  <div class="">
-    <div class="w-[500px] h-[666px] relative rounded-[30px] overflow-hidden">
-      <img src="@/assets/images/placeholder.jpg" class="w-full h-full" />
-      <div class="linear-background absolute top-0 w-full h-full"></div>
-    </div>
+  <div class="w-full h-full">
+    <img src="@/assets/images/placeholder.jpg" class="w-full h-full" />
+    <div class="linear-background absolute top-0 w-full h-full"></div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    city() {
+      return this.$store.getters["getCity"];
+    },
+  },
+};
 </script>

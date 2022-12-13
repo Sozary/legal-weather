@@ -1,19 +1,22 @@
 <template>
-  <div id="app" class="flex justify-center items-center w-screen h-screen">
+  <div
+    id="app"
+    class="flex justify-center items-center w-screen h-screen bg-default-theme"
+  >
     <weather-view />
-    <search-view />
+    <forecast-view />
   </div>
 </template>
 
 <script>
 import WeatherView from "@/components/WeatherView";
-import SearchView from "@/components/SearchView";
+import ForecastView from "@/components/ForecastView";
 
 export default {
   name: "App",
   components: {
     WeatherView,
-    SearchView,
+    ForecastView,
   },
 };
 </script>
