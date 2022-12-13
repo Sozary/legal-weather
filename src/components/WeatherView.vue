@@ -1,8 +1,11 @@
 <template>
-  <div class="w-[500px] h-[666px]">
-    <img src="@/assets/images/placeholder.jpg" alt="" />
+  <div class="">
+    <city-tab />
   </div>
 </template>
 <script>
-export default {};
+import CityTab from "@/components/weather/CityTab";
+export default {
+  components: { CityTab },
+};
 </script>

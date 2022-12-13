@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="flex justify-center items-center w-screen h-screen">
     <weather-view />
     <search-view />
   </div>
