@@ -4,6 +4,7 @@
       type="text"
       @input="search"
       v-model="searchText"
+      :disabled="loadingCity"
       ref="search"
       class="linear-background w-[415px] h-[53px] rounded-xl pl-12 peer"
       @click="
@@ -15,7 +16,7 @@
     <transition name="slide-right">
       <div
         class="absolute top-1/2 -translate-y-1/2 right-0 scale-75 mt-1"
-        v-if="loading"
+        v-if="loading || loadingCity"
       >
         <custom-loader />
       </div>
@@ -71,11 +72,25 @@ import CustomLoader from "@/components/misc/CustomerLoader.vue";
 export default {
   components: { CustomLoader },
   methods: {
+    addToHistory(cityWeather, image, cityInfo) {
+      let store = localStorage.getItem("legal-weather");
+      if (!store) {
+        store = [];
+      } else {
+        store = JSON.parse(store);
+      }
+      store.unshift({ cityWeather, image, cityInfo });
+      if (store.length > 5) {
+        store.pop();
+      }
+      localStorage.setItem("legal-weather", JSON.stringify(store));
+      this.$store.dispatch("refreshSearchList", true);
+    },
     async selectResult(result) {
       this.searchText = result.city + ", " + result.country;
       this.showSearch = false;
       try {
-        this.loading = true;
+        this.loadingCity = true;
         const req = await axios.get(
           encodeURI(process.env.VUE_APP_ZENSERP_API_ENDPOINT + this.searchText)
         );
@@ -88,14 +103,19 @@ export default {
             process.env.VUE_APP_OPENWEATHERMAP_ENDPOINT +
               `lon=${result.lon}&lat=${result.lat}`
           );
-          this.loading = false;
+          this.loadingCity = false;
           if (weather.status == 200) {
             this.$store.dispatch("updateCity", weather.data);
+            this.addToHistory(
+              weather.data,
+              req.data.image_results[0].sourceUrl,
+              result
+            );
           }
         }
       } catch (error) {
         alert("An error occured");
-        this.loading = false;
+        this.loadingCity = false;
       }
     },
     search: _.debounce(async function () {
@@ -157,6 +177,7 @@ export default {
   },
   data() {
     return {
+      loadingCity: false,
       loading: false,
       showSearch: false,
       searchResults: [],

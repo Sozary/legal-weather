@@ -1,22 +1,23 @@
 <template>
-  <div
-    id="app"
-    class="flex justify-center items-center w-screen h-screen bg-default-theme font-montserrat"
-  >
-    <weather-view />
-    <forecast-view />
+  <div id="app" class="bg-default-theme font-montserrat w-screen h-screen">
+    <div class="flex justify-center items-center pt-4">
+      <weather-view /> <forecast-view />
+    </div>
+    <search-list />
   </div>
 </template>
 
 <script>
 import WeatherView from "@/components/WeatherView";
 import ForecastView from "@/components/ForecastView";
+import SearchList from "@/components/SearchList";
 
 export default {
   name: "App",
   components: {
-    WeatherView,
     ForecastView,
+    WeatherView,
+    SearchList,
   },
   computed: {
     city() {

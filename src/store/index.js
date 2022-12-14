@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     city: {},
+    refreshSearchList: false,
     cityImage:
       "https://cdn.cnn.com/cnnnext/dam/assets/130928072317-01-copenhagen-restricted-horizontal-large-gallery.jpg",
     selectedForecast: null,
@@ -13,6 +14,9 @@ export default new Vuex.Store({
   getters: {
     getSelectedForecast(state) {
       return state.selectedForecast;
+    },
+    getRefreshSearchList(state) {
+      return state.refreshSearchList;
     },
     getCityImage(state) {
       return state.cityImage;
@@ -24,6 +28,9 @@ export default new Vuex.Store({
   mutations: {
     updateSelectedForecast(state, selectedForecast) {
       state.selectedForecast = selectedForecast;
+    },
+    updateRefreshSearchList(state, refreshSearchList) {
+      state.refreshSearchList = refreshSearchList;
     },
     updateCityImage(state, cityImage) {
       state.cityImage = cityImage;
@@ -44,6 +51,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    refreshSearchList({ commit }, payload) {
+      commit("updateRefreshSearchList", payload);
+    },
+
     updateCity({ commit }, payload) {
       commit("updateCity", payload);
     },
