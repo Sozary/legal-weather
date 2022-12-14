@@ -26,8 +26,11 @@ export default {
     };
   },
   watch: {
-    refreshSearchList() {
-      this.refreshList();
+    refreshSearchList(value) {
+      if (value) {
+        this.refreshList();
+        this.$store.dispatch("refreshSearchList", false);
+      }
     },
   },
   methods: {

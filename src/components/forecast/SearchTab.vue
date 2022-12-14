@@ -67,7 +67,7 @@
 <script>
 import _ from "lodash";
 import axios from "axios";
-import CustomLoader from "@/components/misc/CustomerLoader.vue";
+import CustomLoader from "@/components/misc/CustomLoader.vue";
 
 export default {
   components: { CustomLoader },
