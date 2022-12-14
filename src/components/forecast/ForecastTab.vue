@@ -16,27 +16,36 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      forecastHeader: [],
-    };
-  },
-  mounted() {
-    this.forecastHeader.push({
-      label: "humidity",
-      value: this.humidity,
-    });
-    this.forecastHeader.push({
-      label: "wind",
-      value: this.wind,
-    });
-  },
   computed: {
+    forecastHeader() {
+      return [
+        {
+          label: "wind",
+          value: this.wind,
+        },
+        {
+          label: "humidity",
+          value: this.humidity,
+        },
+      ];
+    },
+    currentWeather() {
+      if (this.city.list && this.city.list[0]) {
+        return this.city.list[0];
+      }
+      return {};
+    },
     humidity() {
-      return this.city.main?.humidity + "%";
+      if (this.currentWeather.main) {
+        return this.currentWeather.main.humidity + "%";
+      }
+      return "NaN";
     },
     wind() {
-      return this.city.wind?.speed + " km/h";
+      if (this.currentWeather.wind) {
+        return this.currentWeather.wind.speed + " km/h";
+      }
+      return "NaN";
     },
     city() {
       return this.$store.getters["getCity"];

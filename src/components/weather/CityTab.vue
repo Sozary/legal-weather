@@ -45,19 +45,31 @@ export default {
       );
     },
     humidity() {
-      return this.city.main?.humidity + "%";
+      if (this.currentWeather.main) {
+        return this.currentWeather.main.humidity + "%";
+      }
+      return "NaN";
     },
     temperature() {
-      return Math.round(((this.city.main?.temp - 32) * 5) / 9) + " °C";
+      if (this.currentWeather.main) {
+        return Math.round(this.currentWeather.main.temp) + " °C";
+      }
+      return "NaN";
     },
     weatherCondition() {
-      return this.city.weather?.[0].main;
+      return this.currentWeather.weather?.[0].main;
     },
     weatherCode() {
-      return this.city.weather?.[0].icon;
+      return this.currentWeather.weather?.[0].icon;
     },
     cityName() {
-      return this.city.name + ", " + this.city.sys?.country;
+      return this.city.city?.name + ", " + this.city.city?.country;
+    },
+    currentWeather() {
+      if (this.city.list && this.city.list[0]) {
+        return this.city.list[0];
+      }
+      return {};
     },
     city() {
       return this.$store.getters["getCity"];
