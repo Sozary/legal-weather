@@ -6,11 +6,16 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     city: {},
+    cityImage:
+      "https://cdn.cnn.com/cnnnext/dam/assets/130928072317-01-copenhagen-restricted-horizontal-large-gallery.jpg",
     selectedForecast: null,
   },
   getters: {
     getSelectedForecast(state) {
       return state.selectedForecast;
+    },
+    getCityImage(state) {
+      return state.cityImage;
     },
     getCity(state) {
       return state.city;
@@ -19,6 +24,9 @@ export default new Vuex.Store({
   mutations: {
     updateSelectedForecast(state, selectedForecast) {
       state.selectedForecast = selectedForecast;
+    },
+    updateCityImage(state, cityImage) {
+      state.cityImage = cityImage;
     },
     updateCity(state, city) {
       var lastTimestamp = city.list[0].dt;
@@ -38,6 +46,9 @@ export default new Vuex.Store({
   actions: {
     updateCity({ commit }, payload) {
       commit("updateCity", payload);
+    },
+    updateCityImage({ commit }, payload) {
+      commit("updateCityImage", payload);
     },
     updateSelectedForecast({ commit }, payload) {
       commit("updateSelectedForecast", payload);

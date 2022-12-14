@@ -8,6 +8,7 @@ module.exports = {
       "night-dark": "rgb(34, 40, 49)",
       "light-night-dark": "rgb(39, 46, 55 )",
       "light-white": "rgba(255, 255, 255,.5)",
+      grey: "#b7b9bc",
     },
     fontFamily: {
       montserrat: ["Montserrat"],

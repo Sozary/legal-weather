@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <img src="@/assets/images/placeholder.jpg" class="w-full h-full absolute" />
+    <img :src="cityImage" class="w-full h-full absolute" />
     <div class="linear-background absolute top-0 w-full h-full"></div>
     <div
       class="relative px-8 py-12 text-white flex justify-between flex-col h-full"
@@ -32,6 +32,9 @@ export default {
     };
   },
   computed: {
+    cityImage() {
+      return this.$store.getters["getCityImage"];
+    },
     dateFormated() {
       return new Intl.DateTimeFormat("en-US", {
         day: "2-digit",
