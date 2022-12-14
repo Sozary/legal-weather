@@ -6,10 +6,19 @@ module.exports = {
       "default-theme": "#343D4B",
       "night-dark": "#222831",
     },
+    fontFamily: {
+      montserrat: ["Montserrat"],
+      lato: ["Lato"],
+      garamond: ["Garamond"],
+      body: ["Montserrat"],
+    },
   },
   extends: {
     fontFamily: {
-      body: ["montserrat"],
+      montserrat: ["Montserrat"],
+      lato: ["Lato"],
+      garamond: ["Garamond"],
+      body: ["Montserrat"],
     },
   },
 };

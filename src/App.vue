@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="flex justify-center items-center w-screen h-screen bg-default-theme"
+    class="flex justify-center items-center w-screen h-screen bg-default-theme font-montserrat"
   >
     <weather-view />
     <forecast-view />
