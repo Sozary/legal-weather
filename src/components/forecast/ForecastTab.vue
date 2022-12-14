@@ -59,7 +59,7 @@ export default {
       return this.$store.getters["getSelectedForecast"];
     },
     selectedForecast() {
-      if (this.city && this.city.list.length) {
+      if (this.city && this.city.list) {
         return this.city.list[this.selectedForecastIndex];
       }
       return null;
@@ -76,21 +76,15 @@ export default {
         },
       ];
     },
-    currentWeather() {
-      if (this.city.list && this.city.list[0]) {
-        return this.city.list[0];
-      }
-      return {};
-    },
     humidity() {
-      if (this.currentWeather.main) {
-        return this.currentWeather.main.humidity + "%";
+      if (this.selectedForecast && this.selectedForecast.main) {
+        return this.selectedForecast.main.humidity + "%";
       }
       return "NaN";
     },
     wind() {
-      if (this.currentWeather.wind) {
-        return this.currentWeather.wind.speed + " km/h";
+      if (this.selectedForecast && this.selectedForecast.wind) {
+        return this.selectedForecast.wind.speed + " km/h";
       }
       return "NaN";
     },
