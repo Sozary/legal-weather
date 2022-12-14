@@ -18,6 +18,11 @@ export default {
     WeatherView,
     ForecastView,
   },
+  computed: {
+    city() {
+      return this.$store.getters["getCity"];
+    },
+  },
   mounted() {
     this.$store.dispatch("updateCity", {
       cod: "200",
