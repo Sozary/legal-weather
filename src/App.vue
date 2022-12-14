@@ -1,9 +1,12 @@
 <template>
-  <div id="app" class="bg-default-theme font-montserrat w-screen h-screen">
-    <div class="flex justify-center items-center pt-4">
-      <weather-view /> <forecast-view />
+  <div id="app" class="font-montserrat">
+    <div class="w-screen h-screen">
+      <div class="flex flex-col lg:flex-row justify-center items-center pt-4">
+        <weather-view />
+        <forecast-view />
+      </div>
+      <search-list />
     </div>
-    <search-list />
   </div>
 </template>
 

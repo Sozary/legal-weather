@@ -1,12 +1,12 @@
 <template>
-  <div class="relative mt-16 max-w-[415px] ml-36">
+  <div class="relative mt-16 lg:max-w-[415px] lg:ml-36">
     <input
       type="text"
       @input="search"
       v-model="searchText"
       :disabled="loadingCity"
       ref="search"
-      class="linear-background w-[415px] h-[53px] rounded-xl pl-12 peer"
+      class="linear-background w-full h lg:w-[415px] h-[53px] rounded-b-xl lg:rounded-xl pl-12"
       @click="
         triggeredInput = true;
         showSearch = true;
@@ -25,7 +25,7 @@
       <div
         @click="selectResult({})"
         v-if="showSearch"
-        class="w-full max-h-[180px] bg-white text-black absolute mt-3 rounded-xl overflow-hidden"
+        class="w-full max-h-[180px] bg-white text-black absolute mt-3 rounded-xl overflow-y-scroll"
       >
         <div
           @click="selectResult(searchResult)"
@@ -46,7 +46,7 @@
       class="cursor-pointer w-8 h-8 absolute top-1/2 -translate-y-1/2 transition-all"
       :class="{
         'left-2': triggeredInput || searchText,
-        'left-[82px]': !triggeredInput && !searchText,
+        'left-[50px] lg:left-[82px]': !triggeredInput && !searchText,
       }"
     />
     <div
@@ -54,7 +54,7 @@
         triggeredInput = true;
         showSearch = true;
       "
-      class="absolute cursor-pointer -translate-x-1/2 text-[1.25rem] -translate-y-1/2 transition-all font-semibold"
+      class="absolute cursor-pointer -translate-x-1/2 text-[1rem] lg:text-[1.25rem] -translate-y-1/2 transition-all font-semibold"
       :class="{
         'left-[86px] top-[-20px] ': triggeredInput || searchText,
         'left-1/2 top-1/2': !triggeredInput && !searchText,

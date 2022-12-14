@@ -1,13 +1,15 @@
 <template>
-  <div class="flex items-center justify-center text-white mt-5 gap-[1px]">
+  <div
+    class="flex lg:flex-row flex-col items-stretch lg:items-center justify-center text-white mt-5 gap-[1px] w-10/12 lg:w-auto mx-auto mb-4 lg:mb-0"
+  >
     <div
       v-for="(search, index) in searchs"
       :key="index"
       @click="selectSearch(search, index)"
-      class="p-2 first-of-type:rounded-l-lg last-of-type:rounded-r-lg hover:rounded-lg transition-all cursor-pointer"
+      class="p-2 lg:first-of-type:rounded-l-lg lg:last-of-type:rounded-r-lg hover:rounded-lg transition-all cursor-pointer first-of-type:rounded-t-lg last-of-type:rounded-b-lg"
       :class="{
         'linear-background rounded-lg text-black': selectedSearch === index,
-        'bg-light-night-dark text-white hover:rounded-2xl hover:bg-light-white':
+        'bg-light-night-dark text-white hover:rounded-lg hover:bg-light-white':
           selectedSearch !== index,
       }"
     >

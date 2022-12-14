@@ -1,6 +1,8 @@
 <template>
-  <div class="rounded-3xl bg-night-dark h-[620px] w-[600px] -ml-20 text-white">
-    <forecast-tab class="pl-36 pr-12" />
+  <div
+    class="rounded-3xl lg:mt-0 mt-10 bg-night-dark w-10/12 lg:h-[620px] lg:w-[600px] lg:-ml-20 text-white"
+  >
+    <forecast-tab class="px-4 lg:pl-36 lg:pr-12" />
     <search-tab />
   </div>
 </template>

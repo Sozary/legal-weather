@@ -1,7 +1,7 @@
 <template>
   <div class="mt-14">
     <div
-      class="mb-4 flex justify-between text-[1.75rem]"
+      class="mb-4 flex justify-between lg:text-[1.75rem] text-[1.25rem]"
       v-for="forecast in forecastHeader"
       :key="forecast.label"
     >
@@ -12,15 +12,18 @@
         {{ forecast.value }}
       </span>
     </div>
-    <div class="mt-20 flex gap-[1px]" v-if="city.list">
+    <div
+      class="lg:mt-20 mt-10 flex gap-[1px] flex-col lg:flex-row items-center lg:items-start"
+      v-if="city.list"
+    >
       <div
         v-for="(forecastItem, index) in city.list.slice(0, 4)"
         :key="forecastItem.dt"
-        class="w-[104px] h-[180px] first-of-type:rounded-l-2xl last-of-type:rounded-r-2xl transition-all flex flex-col items-center text-[1.25rem] cursor-pointer"
+        class="w-10/12 lg:w-[104px] lg:h-[180px] lg:first-of-type:rounded-l-2xl lg:last-of-type:rounded-r-2xl last-of-type:rounded-b-2xl first-of-type:rounded-t-2xl transition-all flex flex-col items-center text-[1.25rem] cursor-pointer"
         :class="{
           'linear-background rounded-2xl text-black':
             selectedForecastIndex === index,
-          'bg-light-night-dark text-white hover:rounded-2xl hover:bg-light-white':
+          'bg-light-night-dark text-white hover:rounded-2xl hover:bg-light-white ':
             selectedForecastIndex !== index,
         }"
         @click="updateSelectedForecast(index)"

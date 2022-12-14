@@ -13,4 +13,7 @@
       rgba(83, 91, 230, 0.7) 100%
     );
   }
+  body {
+    @apply bg-default-theme;
+  }
 }
